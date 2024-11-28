@@ -42,12 +42,16 @@ static String menuEleccionPalabra() {
                 hayPalabraSeleccionada = true;
                 break;
             case 2:
-                if (!hayPalabraSeleccionada) {
+                if (!hayPalabraSeleccionada) { //Comprobamos si hay una palabra seleccionada para adivinar antes de salir del menú
                     System.out.println("No tienes una palabra seleccionada. Debes utilizar la opción 0 o 1 para seleccionar una.");
                     break;
+                } else {
+                    bucleActivo = false;
+                    break;
                 }
-            // case 3:
-            //     return ;
+            case 3:
+                System.out.println("Saliendo...");
+                return "";
         }
     }
 
@@ -64,8 +68,6 @@ static String introducirPalabra() {
     return palabraElegidaUsuario;
 }
 
-static String palabraElegidaUsuario = introducirPalabra(); //Guardamos la palabra del usuario
-
 //En caso de elegir la opción "0" del menú asignamos nosotros la palabra
 static String palabraAleatoria(){
     String [] palabrasAleatorias = {"gato", "libro", "mesa", "cielo", "flor", "zapato", "faro", "nube", "piedra", "camino"};
@@ -75,36 +77,28 @@ static String palabraAleatoria(){
     return palabraAleatoria;
 }
 
-//Guardamos la palabra para comprobar si se ha introducido una o no
-
-//Encaso de elegir la opción "2" primero debemos comprobar si hay una palabra seleccionada, si la hay mostrar la palabra con guiones
-// static String adivinarPalabra() {
-
-// }
-
 // Censuramos la palabra con ---
 
 static String censurarPalabra(){
 
-    //Recibimos la palabra
-            Scanner sc = new Scanner(System.in);
+     //Recibimos la palabra
+        Scanner sc = new Scanner(System.in);
         System.out.println("Palabra:");
         String palabra = sc.nextLine();
         Character palabraDividida[] = new Character[palabra.length()];
         Character palabraCensurada[] = new Character[palabra.length()];
 
-        // Llenar el array con guiones y mostrarlos
+         // Llenar el array con guiones y mostrarlos
         for (int i = 0; i < palabra.length(); i++) {
             palabraCensurada[i] = '-';
-            palabraDividida[i] = palabra.charAt(i);
-            System.out.print(palabraCensurada[i]);
+            palabraDividida[i] = palabra.charAt(i); 
+                System.out.print(palabraCensurada[i]);
         }
         return ;
     }
 
-
-//Necesito una variable para guardar la palabra o null y saber si está llena o no
     public static void main(String[] args) {
-        menuEleccionPalabra();
+        String palabre = menuEleccionPalabra();
+        System.out.println(palabre);
     }   
 }
