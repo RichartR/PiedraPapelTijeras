@@ -81,20 +81,37 @@ static String palabraAleatoria(){
 
 static String censurarPalabra(){
 
-     //Recibimos la palabra
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Palabra:");
-        String palabra = sc.nextLine();
-        Character palabraDividida[] = new Character[palabra.length()];
-        Character palabraCensurada[] = new Character[palabra.length()];
+    //Recibimos la palabra
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Palabra:");
+    String palabra = sc.nextLine();
+    Character palabraDividida[] = new Character[palabra.length()];
+    Character palabraCensurada[] = new Character[palabra.length()];
 
-         // Llenar el array con guiones y mostrarlos
-        for (int i = 0; i < palabra.length(); i++) {
-            palabraCensurada[i] = '-';
-            palabraDividida[i] = palabra.charAt(i); 
-                System.out.print(palabraCensurada[i]);
+    // Llenar el array con guiones y mostrarlos
+    for (int i = 0; i < palabra.length(); i++) {
+        palabraCensurada[i] = '-';
+        palabraDividida[i] = palabra.charAt(i);
+        if (Character.isWhitespace(palabraDividida[i])) {
+            palabraCensurada[i] = ' ';
         }
-        return ;
+        System.out.print(palabraDividida[i]);
+    }
+
+    while (true) {
+        System.out.println();
+        System.out.println("Adivina la palabra");
+        Character adivina = sc.next().charAt(0);
+        int aciertos = 0;
+        for (int i = 0; i < palabraCensurada.length; i++) {
+            if (String.valueOf(adivina).equalsIgnoreCase(String.valueOf(palabraDividida[i]))) {
+                palabraCensurada[i] = palabraDividida[i];
+            }
+
+            System.out.print(palabraCensurada[i]);
+        }
+
+    }
     }
 
     public static void main(String[] args) {
