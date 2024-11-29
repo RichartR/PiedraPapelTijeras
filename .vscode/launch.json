@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "piedraPapelTijera",
+            "request": "launch",
+            "mainClass": "piedraPapelTijera",
+            "projectName": "PiedraPapelTijeras_2225fb2"
+        },
+        {
+            "type": "java",
+            "name": "ahorcado2",
+            "request": "launch",
+            "mainClass": "ahorcado2",
+            "projectName": "PiedraPapelTijeras_2225fb2"
+        },
+        {
+            "type": "java",
+            "name": "ahorcado",
+            "request": "launch",
+            "mainClass": "ahorcado",
+            "projectName": "PiedraPapelTijeras_2225fb2"
+        },
+        {
+            "type": "jdk",
+            "request": "launch",
+            "name": "Launch Java App"
+        }
+    ]
+}

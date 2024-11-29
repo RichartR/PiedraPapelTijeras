@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ahorcado {
+public class ahorcado2 {
 
 static String menuEleccionPalabra() {
     Scanner sc = new Scanner(System.in);
@@ -80,136 +80,7 @@ static String palabraAleatoria(){
 
 // Censuramos la palabra con ---
 
-static String dibujito(int fallos) {
-    switch (fallos) {
-        case 0:
-            return """
-                _______
-               |/      
-               |      
-               |      
-               |      
-               |      
-            ___|___
-            """;
-
-        case 1:
-            return """
-                _______
-               |/      |
-               |      
-               |      
-               |      
-               |      
-            ___|___
-            """;
-
-        case 2:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |      
-               |      
-               |      
-            ___|___
-            """;
-
-        case 3:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |       |
-               |      
-               |      
-            ___|___
-            """;
-
-        case 4:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |      /|
-               |      
-               |      
-            ___|___
-            """;
-
-        case 5:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |      /|\\
-               |      
-               |      
-            ___|___
-            """;
-
-        case 6:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |      /|\\
-               |       |
-               |      
-            ___|___
-            """;
-
-        case 7:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |      /|\\
-               |       |
-               |      /
-            ___|___
-            """;
-
-        case 8:
-            return """
-                _______
-               |/      |
-               |     \\(_)/
-               |       |
-               |       |
-               |      / \\
-            ___|___
-            """;
-
-        case 9:
-            return """
-                _______
-               |/      |
-               |      (_)
-               |      /|\\
-               |       |
-               |      / \\
-            ___|___
-            """;
-
-        case 10:
-            return """
-                _______
-               |/      |
-               |      (_) 
-               |      /|\\
-               |       |
-               |      / \\
-            ___|___
-            """;
-
-        default:
-            return "Error: número de fallos inválido.";
-    }
-}
-
-
-static void jugar(){
+static void ahorcado(){
 
     //Recibimos la palabra
     Scanner sc = new Scanner(System.in);
@@ -233,20 +104,18 @@ static void jugar(){
     }
     if (!palabra.isEmpty()) { //Comparamos si le hemos pasado o no palabra para finalizar el juego
         System.out.println("Palabra:");
-    while (fallos < 10) { //Comprobamos si hemos excedido los fallos para acabar la partida
+    while (fallos < 10) {
             if (acierto == 0) {
             System.out.println("¡Felicidades, acertaste!");
-            System.out.println("¿Quieres jugar otra vez? (S/N)"); //Preguntamos si quiere jugar otra vez o no
+            System.out.println("¿Quieres jugar otra vez? (S/N)");
             String respuesta = sc.next();
             if (respuesta.equalsIgnoreCase("S")) {
-            jugar();
+            ahorcado();
             } else {
             System.out.println("Gracias por jugar.");
             }
             break;
         }
-
-        System.out.println(dibujito(fallos));
 
         System.out.println();
         for (int i = 0; i < fallos; i++) { //Va enseñando las letras que están mal.
@@ -274,7 +143,7 @@ static void jugar(){
         if (!existeLetra) {
             boolean letraRepetida = false;
             
-            // Verifica si la letra ya está en las fallidas
+            // Verificar si la letra ya está en las fallidas
             for (int i = 0; i < fallos; i++) {
                 if (String.valueOf(palabrasFallidas[i]).equalsIgnoreCase(String.valueOf(adivina))) {
                     letraRepetida = true;
@@ -284,22 +153,22 @@ static void jugar(){
         
             if (!letraRepetida) {
                 if (fallos < palabrasFallidas.length) {
-                    palabrasFallidas[fallos] = adivina; // Registra la letra fallida en el array
+                    palabrasFallidas[fallos] = adivina; // Registrar la letra fallida
                 }
-                fallos++; // Incrementa el contador de fallos
+                fallos++; // Incrementar el contador de fallos
             } else {
                 System.out.println("Ya intentaste con la letra '" + adivina + "'. Intenta con otra.");
             }
         }
         
         
-        if (fallos == 10){ //Si los fallos llegan a 10 se termina la partida
+        if (fallos == 10){
             System.out.println("Has perdido, la palabra era " + palabra + ". ");
             System.out.println("");
             System.out.println("¿Quieres jugar otra vez? (S/N)");
             String respuesta = sc.next();
             if (respuesta.equalsIgnoreCase("S")) {
-            jugar();
+            ahorcado();
             } else {
             System.out.println("Gracias por jugar.");
             }
@@ -309,6 +178,6 @@ static void jugar(){
     }
 
     public static void main(String[] args) {
-        jugar(); //Llama al método principal.
+        ahorcado();
     }   
 }
